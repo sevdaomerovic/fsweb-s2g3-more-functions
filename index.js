@@ -16,9 +16,16 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(dosyaYolu) {
+  const newArr = dosyaYolu.split("/");
+  const fileName = newArr[newArr.length - 1];
+
+  return fileName;
 }
+console.log(
+  "Görev 1. Dosya Adı: ",
+  dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3")
+);
 
 /*
   GÖREV 2
@@ -38,10 +45,19 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(arr) {
+  if (arr.length === 0) {
+    return null;
+  } else {
+    const total = arr.reduce((sum, number) => sum + number, 0);
+    let average = Math.round(total / arr.length);
+    return average;
+  }
 }
-
+console.log(
+  "Görev 2. Ortalama Bul: ",
+  ortalamaBul([109, 216, 288, 143, 71, 185, -278, 194, 5])
+);
 /*
   GÖREV 3
   - Input:  Bir sayı arrayini ve ortalama bulmaya yarayacak bir fonksiyonu parametre olarak alacak bir fonksiyon oluştur.
@@ -62,9 +78,21 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(sayiDizisi, ortalamaBulCallback) {
+  if (sayiDizisi.length === 1) {
+    return sayiDizisi;
+  } else if (sayiDizisi.length === 0) {
+    return null;
+  } else {
+    const ortalama = ortalamaBulCallback(sayiDizisi);
+    const buyukSayilar = sayiDizisi.filter((sayi) => sayi > ortalama);
+    return buyukSayilar;
+  }
 }
+console.log(
+  "Görev 3. Ortalamadan Büyükleri Bul: ",
+  ortalamadanBuyukleriBul([50, -26, 153, 7], ortalamaBul)
+);
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
